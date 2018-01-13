@@ -2,13 +2,16 @@
   <div>
     LALALLAaaaa
    <router-view></router-view>
+   <tab></tab>
   </div>
 </template>
 
 <script>
-import Home from './containors/Home'
+import Tab from 'components/Tab'
 export default {
-  components:{Home}
+  components:{
+    Tab
+    }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div >
-    列表页面
+    收藏
   </div>
 </template>
 
