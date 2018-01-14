@@ -11,10 +11,10 @@ import './assets/font-awesome-4.7.0/scss/font-awesome.scss'
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: {
-    App
-  }
+  //template: '<App/>',
+  //components: {
+  //  App
+ //}
 
-  //  ...App
+   ...App
 })
