@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mheader title="添加页面"></mheader>
+    <mheader title="修改图书"></mheader>
     <div class="add">
       <div class="group">
         <label for="bookName">书名</label>
@@ -15,7 +15,8 @@
         <input type="text" id="content" placeholder="请输入书的详细内容" v-model="book.content">
       </div>
       <div class="group">
-        <button @click="add">添加图书</button>
+        <button @click="update">修改图书</button>
+        <router-link to="/list" tag="button">返回</router-link>
       </div>
     </div>
   </div>
@@ -23,7 +24,7 @@
 
 <script>
   import Mheader from 'components/Mheader';
-  import { addBook } from 'api';
+  import { addBook, getOneBook, updateBook } from 'api';
   export default {
     data() {
       return {
@@ -34,16 +35,27 @@
         }
       }
     },
+    created() {
+      this.getBook();
+    },
     computed: {},
     components: {
       Mheader
     },
     methods: {
-      add() {
-        addBook(this.book).then(res => {
+      getBook() {
+        getOneBook(this.$route.params.id).then(res => {
+          this.book = res.data;
+        });
+      },
+      update() {
+        updateBook(this.$route.params.id, this.book).then(() => {
           this.$router.push('/list');
         })
       }
+    },
+    activated() {//当有缓存的时候就会重新调用此方法
+      this.getBook();
     }
   }
 </script>

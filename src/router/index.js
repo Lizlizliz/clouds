@@ -4,7 +4,7 @@ import Home from 'containors/Home'
 import List from 'containors/List'
 import Collect from 'containors/Collect'
 import Add from 'containors/Add'
-
+import Update from 'containors/Update'
 Vue.use(Router);//router是一个vue插件 需要use一下才可以使用
 
 export default new Router({
@@ -25,7 +25,10 @@ export default new Router({
       path: '/add',
       component: Add
     },
-    
+    {
+      path: '/update/:id', //this.$route.params.id
+      component: Update
+    },
     {//404路由
       path:'*',
       redirect:'/home'

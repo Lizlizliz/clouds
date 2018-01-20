@@ -43,6 +43,7 @@
     left: 0;
     bottom: 0;
     border-top: 1px solid #ccc;
+    background: #fff;
     a {
       display: flex;
       flex: 1;

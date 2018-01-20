@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)//当前文件路径的上一级拼出来的路径
 }
 
@@ -13,7 +13,7 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: ["babel-polyfill", 'whatwg-fetch', './src/main.js']
   },
   output: {
     path: config.build.assetsRoot,
@@ -27,10 +27,10 @@ module.exports = {
     alias: {//别名
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'components':resolve('src/components'),
-      'containors':resolve('src/containors'),
-      'assets':resolve('src/assets'),
-      'api':resolve('src/api')
+      'components': resolve('src/components'),
+      'containors': resolve('src/containors'),
+      'assets': resolve('src/assets'),
+      'api': resolve('src/api')
     }
   },
   module: {
@@ -43,7 +43,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/swiper/dist'), resolve('node_modules/webpack-dev-server/client')],
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
